@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# Organizador de materias
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicacion web simple creada con React + TypeScript + Vite para listar y acceder rapidamente a los recursos de clase del semestre.
 
-Currently, two official plugins are available:
+## Contenido
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Demo local](#demo-local)
+- [Caracteristicas](#caracteristicas)
+- [Requisitos](#requisitos)
+- [Instalacion y uso](#instalacion-y-uso)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Personalizacion rapida](#personalizacion-rapida)
+- [Tecnologias](#tecnologias)
 
-## React Compiler
+## Demo local
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Se abrira Vite en `http://localhost:5173/`. Ahi veras la cabecera con el nombre del desarrollador y las tarjetas de cada materia con su enlace directo a la plataforma o recurso correspondiente.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Caracteristicas
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Grid responsivo de tarjetas con tamanio fijo para una presentacion consistente.
+- Cada tarjeta muestra nombre de la materia, ubicacion o modalidad y un enlace con icono.
+- Estilos personalizados en CSS sin dependencias adicionales.
+- Animaciones sutiles al pasar el cursor sobre las imagenes.
+
+## Requisitos
+
+- Node.js 18+
+- npm 9+
+
+## Instalacion y uso
+
+1. Clona el repositorio y entra a la carpeta del proyecto:
+   ```
+   git clone https://github.com/Danieldlr13/ORGANIZADOR-DE-MATERIAS.git
+   cd ORGANIZADOR-DE-MATERIAS
+   ```
+2. Instala dependencias: `npm install`
+3. Ejecuta el servidor de desarrollo: `npm run dev`
+4. Para generar la version optimizada: `npm run build`
+5. Para previsualizar la build: `npm run preview`
+
+## Estructura del proyecto
+
 ```
+src/
+  main.tsx             # Punto de entrada
+  index.css            # Estilos globales (layout, colores, tipografia)
+  components/
+    Header.tsx         # Cabecera con nombre del desarrollador
+    Materis.tsx        # Contenedor de todas las tarjetas
+    Plantilla.tsx      # Componente para una tarjeta individual
+  assets/              # Recursos estaticos (logos, imagenes)
+```
+
+## Personalizacion rapida
+
+- **Actualizar materias:** edita `src/components/Materis.tsx` para agregar, quitar o cambiar materias.
+- **Cambiar enlaces e imagenes:** cada tarjeta recibe `nombre`, `lugar`, `imagen` y `link` como props en `Plantilla.tsx`.
+- **Modificar estilos:** ajusta colores, tipografias y layout en `src/index.css`.
+- **Titulo principal:** reemplaza el texto del encabezado en `src/components/Header.tsx`.
+
+## Tecnologias
+
+- React 18 con TypeScript
+- Vite como bundler y servidor de desarrollo
+- CSS puro para la capa de presentacion
