@@ -66,8 +66,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center; /* Cambiado de stretch a center */
   gap: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: stretch;
 }
 
 .plantilla {
@@ -110,8 +110,9 @@ a:hover {
 }
 
 .plantilla a img {
-  max-width: clamp(140px, 12vw, 200px);
-  max-height: 120px;
+  width: 160px; /* Tamaño fijo para todas las imágenes */
+  height: 120px; /* Tamaño fijo para todas las imágenes */
+  object-fit: contain; /* Asegurar que las imágenes se ajusten correctamente */
   box-shadow: 0 0 20px rgba(5, 124, 41, 0.55);
   transition: transform 250ms cubic-bezier(.2,.8,.2,1), box-shadow 250ms cubic-bezier(.2,.8,.2,1);
   border-radius: 18px;
