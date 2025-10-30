@@ -7,12 +7,12 @@ Aplicación web moderna para organizar materias, calendario de eventos y tareas 
 ## ✨ Características
 
 - 🔐 **Autenticación**: Inicio de sesión con Google (Firebase Auth)
-- 📖 **Gestión de materias**: Crea, edita y elimina materias con información detallada
-- 📅 **Calendario de eventos**: Visualiza eventos por fecha con vista de calendario
-- ✅ **Sistema de tareas**: Organiza tareas con estados (pendiente, en progreso, completada)
-- 💾 **Persistencia offline**: Los datos se sincronizan automáticamente
+- 📖 **Visualización de materias**: Tarjetas con información de cada materia, ubicación y enlaces directos
+- 📅 **Calendario de eventos**: Crea, edita y elimina eventos académicos con fechas y descripciones
+- 💾 **Persistencia en la nube**: Los eventos se guardan en Firestore y se sincronizan automáticamente
 - 📱 **Diseño responsive**: Funciona perfectamente en móvil, tablet y escritorio
-- 🎨 **Interfaz moderna**: Sidebar colapsable, temas personalizables por materia
+- 🎨 **Interfaz moderna**: Sidebar colapsable con navegación entre materias y calendario
+- 🌐 **Funciona offline**: Los datos se guardan localmente y se sincronizan cuando hay conexión
 
 ## 🚀 Demo Local
 
@@ -102,20 +102,20 @@ firebase deploy --only hosting
 ```
 src/
 ├── components/          # Componentes de React
-│   ├── Calendario.tsx   # Vista de calendario
+│   ├── Calendario.tsx   # Vista de calendario con CRUD de eventos
+│   ├── Materis.tsx      # Lista de materias (hardcodeadas)
+│   ├── Plantilla.tsx    # Tarjeta de materia individual
+│   ├── Sidebar.tsx      # Barra lateral de navegación
 │   ├── Header.tsx       # Encabezado
-│   ├── Materias.tsx     # Gestión de materias
-│   ├── Plantilla.tsx    # Plantilla base
-│   └── Sidebar.tsx      # Barra lateral de navegación
+│   ├── Login.tsx        # Página de inicio de sesión
+│   └── MainContent.tsx  # Contenedor principal
 ├── context/            # Contextos de React
-│   ├── AuthContext.tsx      # Autenticación
-│   └── NavigationContext.tsx # Navegación
+│   ├── AuthContext.tsx      # Gestión de autenticación
+│   └── NavigationContext.tsx # Navegación entre vistas
 ├── hooks/              # Custom hooks
-│   ├── useFirestoreEventos.ts
-│   └── useFirestoreMaterias.ts
+│   └── useFirestoreEventos.ts  # CRUD de eventos en Firestore
 ├── config/
 │   └── firebase.ts     # Configuración de Firebase
-├── types/              # Tipos de TypeScript
 └── main.tsx           # Punto de entrada
 ```
 
